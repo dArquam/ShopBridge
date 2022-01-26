@@ -1,0 +1,116 @@
+
+<div
+class="modal"
+tabindex="-1"
+role="dialog"
+[ngStyle]="{'display':displayStyle}"
+[formGroup]="itemFormGroup"
+>
+<div class="d-flex justify-content-center"
+    *ngIf="loading"
+    >
+        <div class="spinner-border" role="status">
+          <span class="visually-hidden">Loading...</span>
+        </div>
+      </div>
+<div class="modal-dialog" role="document">
+  <div class="modal-content">
+    <div class="modal-header">
+      <h4 class="modal-title">ShopBridge</h4>
+    </div>
+    <div class="modal-body ">
+        <div class=" mb-3">
+        <div class="input-group ">
+            <span class="input-group-text required" id="basic-addon1">Item</span>
+            <input type="text" class="form-control "
+
+            placeholder="Item's name" aria-label="Item" 
+            formControlName="name" 
+            aria-describedby="basic-addon1">
+          </div>
+            <div
+            class="help-block"
+            *ngIf="
+              itemFormGroup.controls.name.invalid &&
+              itemFormGroup.controls.name.touched
+            "
+          >Name Required</div>
+    </div>
+          <div class="mb-3">
+              <div class="input-group ">
+                <input type="text" class="form-control" placeholder="Image's url" aria-label="Image's url" 
+                formControlName="image_url" 
+                aria-describedby="basic-addon2">
+                <span class="input-group-text" id="basic-addon2">URL</span>
+              </div>
+              
+          </div>
+          
+          <div class="mb-3">
+
+              <div class="input-group">
+                <span class="input-group-text required">Price</span>
+                <input type="number" class="form-control" 
+                formControlName="price" 
+                >
+               
+              </div>
+              <div
+              class="help-block"
+              *ngIf="
+                itemFormGroup.controls.price.invalid &&
+                itemFormGroup.controls.price.touched
+              "
+            >Price Required</div>
+          </div>
+
+          <div class="mb-3">
+
+              <div class="input-group">
+                <span class="input-group-text required">Cut Price</span>
+                <input type="number" class="form-control"
+                formControlName="cut_price" 
+                >
+               
+              </div>
+              <div
+              class="help-block"
+              *ngIf="
+                itemFormGroup.controls.cut_price.invalid &&
+                itemFormGroup.controls.cut_price.touched
+              "
+            >Cut price Required</div>
+          </div>
+          
+          
+          <div class="mb-3">
+
+              <div class="input-group">
+                <span class="input-group-text required">Description</span>
+                <textarea class="form-control" aria-label="With textarea"
+                formControlName="description" 
+                ></textarea>
+              </div>
+              <div
+              class="help-block"
+              *ngIf="
+                itemFormGroup.controls.description.invalid &&
+                itemFormGroup.controls.description.touched
+              "
+            >Description Required</div>
+          </div>
+
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-danger" 
+              (click)="closePopup()">
+        Close
+      </button>
+      <button type="button" class="btn btn-success" 
+              (click)="savePopup()">
+        {{mode?'Update':'Save'}}
+      </button>
+    </div>
+  </div>
+</div>
+</div>

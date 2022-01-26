@@ -1,0 +1,10 @@
+input.ng-invalid.ng-touched,
+textarea.ng-invalid.ng-touched {
+  border: 1px red solid;
+}
+.help-block {
+  color: red;
+}
+span.required:after {
+  content: "*";
+}

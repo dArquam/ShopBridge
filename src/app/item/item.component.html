@@ -1,0 +1,32 @@
+<div class="d-flex justify-content-center"
+    *ngIf="loading"
+    >
+        <div class="spinner-border" role="status">
+          <span class="visually-hidden">Loading...</span>
+        </div>
+      </div>
+<div class="row justify-content-center" >   
+    
+<div class="swiper-slide box col-sm-6 col-md-4" *ngFor="let item of items">
+    <div class="icons">
+      <a (click)="onItemDelete(item)" class="fas fa-trash"></a>
+      <a (click)="openPopup(item)" class="fas fa-edit"></a>
+    </div>
+    <div class="image">
+      <img [src]="item.image_url"
+      onerror="this.src='../../assets/images/book-1.png';"
+      alt="image" />
+     
+      
+    </div>
+    <div class="content">
+      <h3>{{item.name}}</h3>
+      <div class="price">${{item.price}} <span>${{item.cut_price}}</span></div>
+      <p class="cut-text" style="text-overflow: ellipsis;">{{item.description}}</p>
+    </div>
+</div>
+</div>
+<app-item-modal [displayStyle]="displayStyle" (modal_status)="modal_status($event)"
+(updateData)="updateData($event)"
+[mode]='mode'
+></app-item-modal>
